@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Christmas Banner Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+/*navbar*/
+    .main-header {
+    background-color: #ffffff;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    }
+
+    .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    }
+
+    .logo {
+    font-size: 20px;
+    font-weight: bold;
+    }
+
+    .main-nav {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+    justify-content: center;
+    }
+
+    .main-nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    }
+
+    .main-nav a:hover {
+    color: #FF1A50;
+    }
+
+    .header-buttons {
+    display: flex;
+    gap: 10px;
+    }
+
+    .btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    }
+
+    .btn-outline {
+    background-color: transparent;
+    border: 1px solid #999;
+    color: #333;
+    }
+
+    .btn-outline:hover {
+    border-color: #FF1A50;
+    color: #FF1A50;
+    }
+
+    .btn-primary {
+    background-color: #FF1A50;
+    color: #fff;
+    border: 1px solid #FF1A50;
+    }
+
+    .btn-primary:hover {
+    background-color: #e01344;
+    border-color: #e01344;
+    }
+/*banner*/
+    .christmas-banner {
+      position: relative;
+      height: 450px;
+      color: white;
+      background: url('background.webp') no-repeat center center/cover;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+    }
+
+    .santa-img {
+      position: absolute;
+      top: 40px;
+      right: -300px;
+      width: 600px;
+      z-index: 5;
+
+      animation: flyInSanta 2.5s ease-out forwards;
+      transform: translate(var(--moveX, 0px), var(--moveY, 0px));
+      transition: transform 0.1s ease-out;
+    }
+
+    .mountain-img {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 3;
+      transition: transform 0.1s ease-out;
+    }
+
+    .banner-content {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+    }
+
+    .banner-text {
+    text-align: left;
+    }
+
+    .btn-mini {
+    background-color: transparent;
+    color: #00ffa3;
+    border: 1px solid white;
+    padding: 5px 15px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-bottom: 15px;
+    display: inline-block;
+    }
+
+    .christmas-banner h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 0;
+    }
+
+    .subtext {
+    font-size: 18px;
+    margin: 10px 0 20px;
+    }
+
+    .cta-link {
+    font-size: 14px;
+    color: white;
+    text-decoration: underline;
+    }
+
+    .text-green {
+    color: #00ffa3;
+    }
+
+    @keyframes flyInSanta {
+      0% {
+        right: -300px;
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        right: 400px;
+        opacity: 1;
+      }
+    }
+/*logos*/
+    .brand-logos .brand-row {
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        gap: 60px; 
+        padding: 40px 0;
+        flex-wrap: wrap;
+    }
+
+    .brand-logos img {
+        height: 45px; 
+        object-fit: contain;
+    }
+/*instrument*/
+    .popular-instruments {
+        padding: 60px 0;
+        background-color: #fff;
+        background-image: repeating-linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.05) 0,
+            rgba(0, 0, 0, 0.05) 1px,
+            transparent 1px,
+            transparent 170px
+        );
+        background-size: 170px 100%;
+    }
+
+    .text-pink {
+        color: #ff1a50;
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 5px;
+        max-width: 800px;
+        margin-left: 200px;
+        text-align: left;
+    }
+
+    .section-title {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 40px;
+        max-width: 800px;
+        margin-left: 200px;
+        text-align: left;
+    }
+
+    .instrument-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 80px;
+        max-width: 1000px; 
+        margin: 0 auto;
+    }
+
+    .instrument-box {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .instrument-box img {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        margin-top: 4px;
+    }
+
+    .instrument-box h3 {
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .instrument-box p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+    }
+/*promotion*/
+    .promo-section {
+        position: relative;
+        background-color: #fff;
+        padding: 100px 0;
+        overflow: hidden;
+    }
+
+    .promo-wrapper {
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .promo-bull {
+        position: absolute;
+        left: 10px;
+        bottom: 0;
+        width: 500px;
+        z-index: 1;
+    }
+
+    .promo-bear {
+        position:absolute;
+        right: -20px;
+        bottom: 0;
+        width: 300px;
+        z-index: 1;
+    }
+
+    .promo-card {
+        position: relative;
+        background-color: white;
+        border-radius: 24px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+        padding: 60px;
+        max-width: 950px;
+        width:100%;
+        z-index: 2;
+        text-align: left;
+    }
+
+    .promo-card h2 {
+        font-size: 38px;
+        font-weight: 800;
+        margin: 10px 0 20px;
+        line-height: 1.3;
+    }
+
+    .promo-card .desc {
+        color: #222;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .text-pink {
+        color: #FF1A50;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        background: #FF1A50;
+        color: #fff;
+        padding: 12px 28px;
+        font-size: 14px;
+        border: none;
+        border-radius: 999px;
+        cursor: pointer;
+    }
+
+/* Promo Feature Cards */
+    .feature-box {
+        position: absolute;
+        width: 450px;
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 24px 28px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+        z-index: 3;
+        font-size: 14px;
+    }
+
+    .feature-box h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .feature-top {
+        top: 40px;
+        right: 150px;
+    }
+
+    .feature-bottom {
+        top: 250px;
+        right: 200px;
+    }
+/*market table*/
+    .btn-primary {
+      background: #FF1A50;
+      color: #fff;
+      padding: 10px 24px;
+      font-size: 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #e01344;
+    }
+
+    .market-section {
+      display: flex;
+      gap: 4rem;
+      padding: 4rem 2rem;
+      max-width: 1440px;
+      margin: auto;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .market-left {
+      flex: 1;
+      min-width: 300px;
+      max-width: 380px;
+    }
+
+    .market-left .h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 1rem 0 0.75rem;
+      line-height: 1.2;
+    }
+
+    .market-left .subtitle {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+
+    .search-bar {
+      display: flex;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      height: 44px;
+      margin-bottom: 1rem;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 0.6rem 1rem;
+      border: none;
+      font-size: 0.95rem;
+    }
+
+    .search-btn {
+      background: none;
+      border: none;
+      padding: 0 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    .search-btn .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      stroke-width: 2;
+    }
+
+    .market-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .market-features div {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .market-features strong {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      display: block;
+    }
+
+    .market-right {
+      flex: 2;
+      min-width: 400px;
+    }
+
+    .table-title {
+      font-size: 1.3rem;
+      color: #ff1a50;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    .market-table {
+      overflow-x: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .market-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .market-table th,
+    .market-table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .market-table th {
+      background-color: #f9f9f9;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .pagination {
+      display: flex;
+      gap: 8px;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pagination button {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .pagination button.active {
+      background: #ff1a50;
+      color: #fff;
+      border-color: #ff1a50;
+    }
+/*mobile phone image*/
+    .promo-section {
+      position: relative;
+      overflow: hidden;
+      padding: 0 1rem;
+    }
+
+    .promo-background {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      object-fit: cover;
+    }
+
+    .promo-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto; 
+    }
+
+    .promo-text-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1rem 3rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      min-width: 320px;
+    }
+
+    .promo-text-card .small-heading {
+      color: #f43f5e;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .promo-text-card h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: #111;
+    }
+
+    .promo-text-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .promo-text-card li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+      color: #111;
+    }
+
+    .promo-phone {
+      position: relative;
+      height: 400px; 
+      overflow: hidden; 
+      flex-shrink: 0;
+    }
+
+    .promo-phone img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+    }
+
+@media (max-width: 768px) {
+  .promo-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .promo-phone {
+    margin-top: 30px;
+  }
+}
+
+    .steps-section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .steps-left {
+      flex: 1;
+    }
+
+    .steps-left h4 {
+      color: #e91e63;
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+
+    .steps-left h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .steps-left img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .steps-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #ccc;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .step-item:first-child .step-circle {
+      background-color: #e91e63;
+    }
+
+    .step-circle::after {
+      content: "";
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      width: 2px;
+      height: 30px;
+      background-color: #ddd;
+      transform: translateX(-50%);
+    }
+
+    .step-item:last-child .step-circle::after {
+      display: none;
+    }
+
+    .step-content h4 {
+      margin: 0 0 5px;
+      font-size: 18px;
+    }
+
+    .step-content p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .steps-section {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .steps-left,
+      .steps-right {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+    <header class="main-header py-3 bg-light">
+        <div class="header-inner container d-flex align-items-center justify-content-between flex-wrap">
+          <!-- Logo -->
+          <div class="logo fw-bold">
+            LOGO
+          </div>
+      
+          <!-- Navigation -->
+          <nav class="main-nav d-flex flex-wrap gap-3 navbar-menu">
+            <a href="#" class="text-decoration-none text-dark">Trading</a>
+            <a href="#" class="text-decoration-none text-dark">Platforms</a>
+            <a href="#" class="text-decoration-none text-dark">Clients Tools</a>
+            <a href="#" class="text-decoration-none text-dark">Promotions</a>
+            <a href="#" class="text-decoration-none text-dark">Research</a>
+            <a href="#" class="text-decoration-none text-dark">Partnerships</a>
+            <a href="#" class="text-decoration-none text-dark">About Us</a>
+          </nav>
+      
+          <!-- Buttons -->
+          <div class="header-buttons d-flex gap-2 mt-3 mt-lg-0">
+            <button class="btn btn-outline-secondary">Demo</button>
+            <button class="btn btn-outline-secondary">Login</button>
+            <button class="btn btn-primary">Sign Up</button>
+          </div>
+        </div>
+    </header>
+    
+    <!--banner-->
+    <section class="christmas-banner">
+        <img src="santa.png" class="santa-img" alt="Santa" />
+        <img src="mountain.png" class="mountain-img" alt="Mountain" />
+
+        <div class="banner-content">
+            <div class="banner-text">
+                <p class="btn-mini">Celebrate With Us</p>
+                <h1><span class="text-green">Merry</span> Christmas</h1>
+                <p class="subtext">
+                Let the <span class="text-green">sparkle</span> of the holidays light up your days.
+                </p>
+                <a href="#" class="cta-link">→ CHECK OUR PROMOTIONS</a>
+            </div>
+        </div>
+    </section>
+  
+    <!-- Popular Instruments -->
+    <section class="popular-instruments">
+        <!--brand logos-->
+        <section class="brand-logos">
+            <div class="container brand-row">
+                <img src="brands/brands (2).png" alt="HSBC" />
+                <img src="brands/brands (3).png" alt="UBS" />
+                <img src="brands/brands (4).png" alt="Citi" />
+                <img src="brands/brands (5).png" alt="Bank of America" />
+                <img src="brands/brands (6).png" alt="CME Group" />
+                <img src="brands/brands (7).png" alt="Deutsche Bank" />
+                <img src="brands/brands (1).png" alt="JP Morgan" />
+            </div>
+        </section>
+
+        <div class="container">
+            <p class="text-pink">Access To The Most</p>
+            <h2 class="section-title">POPULAR INSTRUMENTS</h2>
+            <div class="instrument-grid">
+                <!-- Left Column -->
+                <div class="instrument-box">
+                    <img src="icon/forex.png" alt="Forex Icon" />
+                    <div>
+                        <h3>Forex</h3>
+                        <p>Trade over 100 currency pairs, including majors, minors and exotics, with ultra-low spreads and fast execution.</p>
+                    </div>
+                </div>
+                <div class="instrument-box">
+                    <img src="icon/stock.png" alt="Stocks Icon" />
+                    <div>
+                        <h3>Stocks</h3>
+                        <p>Get access to major international stocks (Apple, Google, Tesla) with no commissions or requotes and no hidden mark-ups.</p>
+                    </div>
+                </div>
+                <div class="instrument-box">
+                    <img src="icon/indices.png" alt="Indices Icon" />
+                    <div>
+                        <h3>Stock Indices</h3>
+                        <p>Get access to major international indices (S&P 500, Nasdaq 100) with no commissions or requotes.</p>
+                    </div>
+                </div>
+                <div class="instrument-box">
+                    <img src="icon/wheat.png" alt="Commodities Icon" />
+                    <div>
+                        <h3>Commodities</h3>
+                        <p>Trade a variety of commodities (Cotton, Cocoa, Wheat) with low spreads and fast execution.</p>
+                    </div>
+                </div>
+  
+                <!-- Right Column -->
+                <div class="instrument-box">
+                    <img src="icon/gold.png" alt="Precious Metals Icon" />
+                    <div>
+                        <h3>Precious Metals</h3>
+                        <p>Speculate on gold and silver vs. the USD and diversify your trading portfolio.</p>
+                    </div>
+                </div>
+                <div class="instrument-box">
+                    <img src="icon/energy.png" alt="Energies Icon" />
+                    <div>
+                        <h3>Energies</h3>
+                        <p>Trade CFDs on Brent oil and natural gas with no commissions or requotes.</p>
+                    </div>
+                </div>
+                <div class="instrument-box">
+                    <img src="icon/crypto.png" alt="Crypto Icon" />
+                    <div>
+                        <h3>Cryptocurrencies</h3>
+                        <p>Trade the new era of currencies like Bitcoin, Ethereum and Litecoin 24/7 with low spreads.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="promo-section">
+        <div class="promo-wrapper">
+            <img src="bull.png" alt="Bull" class="promo-bull" />
+            <div class="promo-card">
+                <p class="text-pink">Brand Introduce</p>
+                <h2>100% Stocks &<br />0% Commission</h2>
+                <p class="desc">
+                    Get exactly what you're paying for the commission-free stock investing
+                </p>
+                <button class="btn-primary">Explore</button>
+            </div>
+            <div class="feature-box feature-top">
+                <h4>The Perfect Environment For Expert Advisors(EA)</h4>
+                <p>
+                    We’ve built the perfect environment for EAs to thrive – we allow scalping, hedging,
+                    news trading and more. No requotes and no minimum stop loss distance.
+                </p>
+            </div>
+            <div class="feature-box feature-bottom">
+                <h4>Instant Deposits.<br />Fast Withdrawals.</h4>
+                <p>
+                    Fund your account easily and securely through our wide range of payment options.
+                    Your funds are held securely in Tier 1 banks.
+                </p>
+            </div>
+            <img src="bear.png" alt="Bear" class="promo-bear" />
+        </div>
+    </section>
+    <!--Market table-->
+    <section class="container market-section">
+        <div class="market-left">
+          <p class="text-pink">Make Your Move</p>
+          <h2 class="h1">Trade Over 5600<br>Global Markets.</h2>
+          <p class="subtitle">We Offer Two Levels Of Pricing Depending On Your Account Tier.</p>
+    
+          <div class="search-bar">
+            <input type="text" id="marketSearchInput" placeholder="Search Market" />
+            <button class="search-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z" />
+              </svg>
+            </button>
+          </div>
+    
+          <div class="market-features">
+            <div><strong>$100</strong><span>Minimum Deposit</span></div>
+            <div><strong>100%</strong><span>Security of Funds</span></div>
+            <div><strong>1:500</strong><span>Max Leverage</span></div>
+            <div><strong>10+</strong><span>Funding Options</span></div>
+            <div><strong>10000+</strong><span>Trading Instruments</span></div>
+            <div><strong>&lt;20ms</strong><span>Execution Speed</span></div>
+          </div>
+        </div>
+    
+        <div class="market-right">
+          <p class="text-pink table-title">*Instrument table</p>
+          <div class="market-table">
+            <table id="marketDataTable">
+              <thead>
+                <tr><th>Name</th><th>Buy</th><th>Sell</th><th>Spread</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+    </section>
+
+    <!-- Investment Tips -->
+    <section class="promo-section">
+        <img src="images-2.jpg" alt="Background" class="promo-background" />
+        <div class="promo-content-wrapper">
+          <div class="promo-content">
+            <div class="promo-text-card">
+              <p class="small-heading">Make Your Move</p>
+              <h2>Make Smart Investment<br>Decisions With Brand</h2>
+              <ul>
+                <li><span>Daily Market Reviews</span> <span>➔</span></li>
+                <li><span>Exclusive Trading Tools</span> <span>➔</span></li>
+                <li><span>Technical Analysis From Central</span> <span>➔</span></li>
+                <li><span>Economic Data Earnings Calender</span> <span>➔</span></li>
+              </ul>
+            </div>
+            <div class="promo-phone">
+              <img src="mobile-phone.png" alt="Phone" />
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Steps to Start -->
+    <section class="steps-section">
+      <!-- Left Side -->
+      <div class="steps-left">
+        <h4>How To Get Started</h4>
+        <h2>Start Free In 4 Steps.</h2>
+        <img src="images-3.png" alt="Steps Illustration" />
+      </div>
+
+      <!-- Right Side -->
+      <div class="steps-right">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <div class="step-content">
+            <h4>Register</h4>
+            <p>Open an account by filling in your details.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <div class="step-content">
+            <h4>Verify</h4>
+            <p>Upload your document(s) for fast verification.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-content">
+            <h4>Fund</h4>
+            <p>Fund your account with your chosen payment method.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <div class="step-content">
+            <h4>Trade</h4>
+            <p>Unlock thousands of instruments and start investing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>©2025 All rights reserved.</p>
+    </footer>
+
+  <script>
+    //banner move effect
+    const banner = document.querySelector('.christmas-banner');
+    const santa = document.querySelector('.santa-img');
+    const mountain = document.querySelector('.mountain-img');
+
+    banner.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 15;
+
+      santa.style.setProperty('--moveX', `${x * 1.5}px`);
+      santa.style.setProperty('--moveY', `${y * 1.5}px`);
+
+      mountain.style.transform = `translate(${x * 0.5}px, ${y * 0.3}px)`;
+    });
+
+    /*Market table*/
+    let marketData = [];
+    let currentPage = 1;
+    const rowsPerPage = 10;
+
+    function renderTable(data) {
+      const tbody = $("#marketDataTable tbody");
+      tbody.empty();
+
+      const start = (currentPage - 1) * rowsPerPage;
+      const end = start + rowsPerPage;
+      const pageItems = data.slice(start, end);
+
+      if (pageItems.length === 0) {
+        tbody.html("<tr><td colspan='4'>No data found</td></tr>");
+        return;
+      }
+
+      pageItems.forEach(item => {
+        const row = `
+          <tr>
+            <td><strong>${item.name}</strong></td>
+            <td>${item.buy}</td>
+            <td>${item.sell}</td>
+            <td>${item.spread}</td>
+          </tr>`;
+        tbody.append(row);
+      });
+    }
+
+    function renderPagination(data) {
+      const pageCount = Math.ceil(data.length / rowsPerPage);
+      const pagination = $("#pagination");
+      pagination.empty();
+
+      for (let i = 1; i <= pageCount; i++) {
+        pagination.append(
+          `<button class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`
+        );
+      }
+
+      $(".pagination button").on("click", function () {
+        currentPage = parseInt($(this).data("page"));
+        renderTable(filteredData());
+        renderPagination(filteredData());
+      });
+    }
+
+    function filteredData() {
+      const keyword = $("#marketSearchInput").val().toLowerCase();
+      return marketData.filter(item =>
+        item.name.toLowerCase().includes(keyword)
+      );
+    }
+
+    function fetchMarketData() {
+      $.ajax({
+        url: "http://18.143.79.95/api/priceData/technical-test",
+        method: "GET",
+        success: function(data) {
+          marketData = data;
+          currentPage = 1;
+          renderTable(filteredData());
+          renderPagination(filteredData());
+        },
+        error: function() {
+          $("#marketDataTable tbody").html("<tr><td colspan='4'>Failed to load data</td></tr>");
+        }
+      });
+    }
+
+    $(document).ready(function () {
+      fetchMarketData();
+      setInterval(fetchMarketData, 10000); // refresh every 10s
+
+      $("#marketSearchInput").on("input", function () {
+        currentPage = 1;
+        renderTable(filteredData());
+        renderPagination(filteredData());
+      });
+    });
+
+
+  </script>
+</body>
+</html>
